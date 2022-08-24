@@ -43,12 +43,12 @@ const Login = () => {
                 </Text>
                 <Div>
                     <Text color="alias-primary" marginBottom="8px" >Business email</Text>
-                    <TextInput aria-label="email" textAlign="center" value={email} onValueChange={onEmailChange} marginBottom="8px" />
+                    <TextInput data-testid="email-input" aria-label="email" textAlign="center" value={email} onValueChange={onEmailChange} marginBottom="8px" />
                 </Div>
                 {!emailValid(email) && !!email.length && <Text color="alias-alert" textAlign="center" marginBottom="20px">
                     Please enter a valid Microsoft account email
                 </Text>}
-                <Button disabled={!emailValid(email)} width="100%" onClick={() => handleLogin(email)}>Log in</Button>
+                <Button data-testid="login-button" disabled={!emailValid(email)} width="100%" onClick={() => handleLogin(email)}>Log in</Button>
             </Div>
         </Div>
     );

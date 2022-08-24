@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@sharegate/orbit-ui": "^28.0.1",
+    "@testing-library/cypress": "^8.0.3",
+    "cypress": "10.6.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/react-hooks": "^8.0.1",
@@ -26,7 +28,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cypress:open": "cypress open",
+    "cypress:run:headless": "cypress run"
   },
   "eslintConfig": {
     "extends": [

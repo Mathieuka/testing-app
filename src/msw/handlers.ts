@@ -1,6 +1,6 @@
 import { groups } from "./mocks/group";
 import { rest } from "msw";
-import { user } from "./mocks/user";
+import { user, clientId } from "./mocks/user";
 
 const loginHandler = [
     rest.post(
@@ -13,9 +13,20 @@ const loginHandler = [
     )
 ];
 
+const logoutHandler = [
+    rest.post(
+        `http://localhost:8000/api/auth/log-out?clientId=${clientId}`,
+        (req, res, ctx) => {
+            return res(
+                ctx.json(user)
+            );
+        }
+    )
+];
+
 const postsHandler = [
     rest.get(
-        "http://localhost:8000/api/groups?clientId=73c40f94-2da8-441b-858f-c4756e6c83f5",
+        `http://localhost:8000/api/groups?clientId=${clientId}`,
         (req, res, ctx) => {
             return res(
                 ctx.json({
@@ -26,4 +37,5 @@ const postsHandler = [
     )
 ];
 
-export const handlers = [...loginHandler, ...postsHandler /*, ...other handlers*/];
+
+export const handlers = [...loginHandler, ...postsHandler, ...logoutHandler /*, ...other handlers*/];

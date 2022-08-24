@@ -38,7 +38,7 @@ const FilterCards = ({ groups, handleSetGroupFiltersName }: { groups: tGroup[]; 
         {filterCardsConfig.map(({ logo, filter, title }) => (
             <Div key={filter}>
                 <Div marginX="10px">
-                    <HtmlButton onClick={() => handleSetGroupFiltersName(filter)} display="flex" alignItems="center">
+                    <HtmlButton data-testid={title} onClick={() => handleSetGroupFiltersName(filter)} display="flex" alignItems="center">
                         <Flex direction="column" alignItems="start">
                             <Text>{groups.filter(group => group[filter]).length}</Text>
                             <Text>{title}</Text>
@@ -80,7 +80,7 @@ const Cockpit = () => {
                     <Div display="flex" alignItems="center">
                         <Text>Admin</Text>
                     </Div>
-                    <Button variant="secondary" onClick={handleLogout}>Logout</Button>
+                    <Button data-testid="logout-button" variant="secondary" onClick={handleLogout}>Logout</Button>
                 </Div>
             </Div>
             <Divider/>
@@ -112,7 +112,7 @@ const Cockpit = () => {
                 </Div>
                 <Divider/>
                 {groups.map(({ id ,memberCount,name: groupName, tags }) => (
-                    <Div key={id} marginBottom="24px">
+                    <Div data-testid="group-element" key={id} marginBottom="24px">
                         <Div display="grid" gridTemplateColumns="1fr 1fr 1fr">
                             <strong><Div>{groupName}</Div></strong>
                             <Div display="flex">
