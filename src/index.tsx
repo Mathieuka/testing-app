@@ -1,19 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "./index.css";
+import { BrowserRouter } from "react-router-dom";
+import { ShareGateTheme, ThemeProvider, createThemeVars } from "@sharegate/orbit-ui";
+import { render } from "react-dom";
+import { worker } from "./msw/browser";
+import App from "./App";
+import GroupProvider from "./providers/GroupProvider";
+import React from "react";
+import UserProvider from "./providers/UserProvider";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+createThemeVars([ShareGateTheme]);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+if (process.env.NODE_ENV === "development") {
+    worker.start();
+}
+
+render(
+    <BrowserRouter>
+        <ThemeProvider height={"100%"} theme={ShareGateTheme} colorScheme="light">
+            <UserProvider>
+                <GroupProvider>
+                    <App />
+                </GroupProvider>
+            </UserProvider>
+        </ThemeProvider>
+    </BrowserRouter>,
+    document.getElementById("root")
+);
