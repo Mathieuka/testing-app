@@ -5,9 +5,7 @@ describe('Filter groups', () => {
   beforeEach(async () => {
     Cypress.on('test:before:run:async', async () => {
       await worker.start();
-    });
-    
-    
+    });   
   })
 
   it('Login and display filtered groups', () => {

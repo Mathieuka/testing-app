@@ -5,6 +5,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useUser from "../hooks/useUser";
 
+export const TextComponent = () => (
+    <Text textAlign="center" color="alias-primary" marginBottom="40px" aria-label="some-text">
+        Signin with your Microsoft account to manage your collaborative governance efforts
+    </Text>
+)
+
 const Login = () => {
     const { handleLogin } = useUser();
     const [email, setEmail] = useState("");
@@ -38,9 +44,7 @@ const Login = () => {
                 <Div marginBottom="32px">
                     <ShareGateLogo/>
                 </Div>
-                <Text textAlign="center" color="alias-primary" marginBottom="40px">
-                    Signin with your Microsoft account to manage your collaborative governance efforts
-                </Text>
+                <TextComponent />
                 <Div>
                     <Text color="alias-primary" marginBottom="8px" >Business email</Text>
                     <TextInput data-testid="email-input" aria-label="email" textAlign="center" value={email} onValueChange={onEmailChange} marginBottom="8px" />
