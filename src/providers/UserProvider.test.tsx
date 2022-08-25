@@ -25,7 +25,7 @@ jest.mock("react-router-dom", () => {
 });
 
 describe("Auth", () => {
-    test("Should login", async () => {
+    test("Should login and redirect the user to the cockpit page", async () => {
         const { result, waitFor } = renderHook(useUserContext, { wrapper: BrowserRouter });
         expect(result.current.user).toEqual({ name: null, clientId: null });
         act(() => {
